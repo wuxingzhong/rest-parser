@@ -1,4 +1,4 @@
-module rest-parser
+module github.com/wuxingzhong/rest-parser
 
 go 1.15
 
