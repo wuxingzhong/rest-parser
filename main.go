@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/urfave/cli/v2" // imports as package "cli"
+	"github.com/urfave/cli/v2"
 	"io/ioutil"
 	"log"
 	"os"
