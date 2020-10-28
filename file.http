@@ -1,7 +1,17 @@
 
-### v2ray连通性测试
+### 测试
 
 GET /test?aaa=(string)
 Content-Type: application/x-www-form-urlencoded
 
+### 测试22
 
+POST /test?aaa=(string)
+Content-Type: application/x-www-form-urlencoded
+
+### 测试22
+
+POST /test22?aaa=(string)
+Content-Type: application/x-www-form-urlencoded
+
+{"aa":"bbb"}

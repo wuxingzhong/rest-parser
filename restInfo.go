@@ -3,6 +3,8 @@ package main
 
 // restInfo
 type RestInfo struct {
+	// 序号
+	Index  int
 	// 注释
 	Comment string
 	// 请求头
