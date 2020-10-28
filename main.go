@@ -9,19 +9,18 @@ import (
 	"os"
 )
 
-
 func main() {
 	var (
 		restIndex int
 		restFile  string
 	)
 	app := &cli.App{
-		Name: "rest-parse",
-		Usage: "解析rest文件",
+		Name:      "rest-parse",
+		Usage:     "解析rest文件",
 		ArgsUsage: "rest文件",
-		Flags: []cli.Flag {
+		Flags: []cli.Flag{
 			&cli.IntFlag{
-				Name:        "index",
+				Name: "index",
 				Aliases: []string{
 					"i",
 				},
@@ -30,12 +29,11 @@ func main() {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			if c.NArg() >0 {
+			if c.NArg() > 0 {
 				restFile = c.Args().First()
 			}
 			return nil
 		},
-
 	}
 	err := app.Run(os.Args)
 	if err != nil {
@@ -48,13 +46,13 @@ func main() {
 	if restIndex > 0 {
 		if len(restInfoList) >= restIndex {
 			tmpMap["restList"] = []parser.RestInfo{restInfoList[restIndex-1]}
-		}else{
+		} else {
 			return
 		}
-	}else {
+	} else {
 		tmpMap["restList"] = restInfoList
 	}
-	data, _:= json.Marshal(tmpMap)
+	data, _ := json.Marshal(tmpMap)
 	fmt.Printf("%v", string(data))
 	return
 }
