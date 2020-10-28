@@ -1,0 +1,7 @@
+
+### v2ray连通性测试
+
+GET /test?aaa=(string)
+Content-Type: application/x-www-form-urlencoded
+
+
