@@ -20,6 +20,7 @@ func main() {
 	app := &cli.App{
 		Name: "rest-parse",
 		Usage: "解析rest文件",
+		ArgsUsage: "rest文件",
 		Flags: []cli.Flag {
 			&cli.IntFlag{
 				Name:        "index",
