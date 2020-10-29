@@ -32,7 +32,7 @@ const (
 )
 
 // RestParser 解析rest文件  filename: 文件名 , varMap: 替换变量列表
-func RestParser(filename string, varMap map[string]string) (restInfoList []RestInfo, err error) {
+func RestParser(filename string, varMap VarMap ) (restInfoList []RestInfo, err error) {
 	// 处理文件
 	restFileBuf, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -40,19 +40,7 @@ func RestParser(filename string, varMap map[string]string) (restInfoList []RestI
 	}
 	// 替换变量列表
 	reg := regexp.MustCompile("{{(.+?)}}")
-	str := reg.ReplaceAllStringFunc(string(restFileBuf), func(old string) string {
-		old = strings.ReplaceAll(old, "{{", "")
-		old = strings.ReplaceAll(old, "}}", "")
-		if varMap == nil {
-			return ""
-		}
-		v, b := varMap[old]
-		if !b {
-			return ""
-		}
-		return v
-	})
-
+	str := reg.ReplaceAllStringFunc(string(restFileBuf), varMap.ReplaceFunc)
 	// 解析
 	lines := strings.Split(str, "\n")
 	if len(lines) < 2 {
