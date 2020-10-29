@@ -39,7 +39,7 @@ func RestParser(filename string, varMap map[string]string) (restInfoList []RestI
 		return
 	}
 	// 替换变量列表
-	reg := regexp.MustCompile("{{(.+)}}")
+	reg := regexp.MustCompile("{{(.+?)}}")
 	str := reg.ReplaceAllStringFunc(string(restFileBuf), func(old string) string {
 		old = strings.ReplaceAll(old, "{{", "")
 		old = strings.ReplaceAll(old, "}}", "")
