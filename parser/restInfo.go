@@ -32,7 +32,7 @@ const (
 )
 
 // RestParser 解析rest文件  filename: 文件名 , varMap: 替换变量列表
-func RestParser(filename string, varMap VarMap ) (restInfoList []RestInfo, err error) {
+func RestParser(filename string, varMap VarMap) (restInfoList []RestInfo, err error) {
 	// 处理文件
 	restFileBuf, err := ioutil.ReadFile(filename)
 	if err != nil {
