@@ -69,7 +69,10 @@ func RestParser(filename string, varMap VarMap) (restInfoList []RestInfo, err er
 				flag = _restNull
 			}
 			flag = _restComment
+		} else if strings.HasPrefix(v, "#") {
+			continue
 		}
+
 		switch flag {
 		case _restComment:
 			// comment
