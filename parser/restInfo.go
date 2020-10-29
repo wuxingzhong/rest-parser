@@ -3,7 +3,6 @@ package parser
 import (
 	"fmt"
 	"io/ioutil"
-	"regexp"
 	"strings"
 )
 
@@ -39,8 +38,7 @@ func RestParser(filename string, varMap VarMap) (restInfoList []RestInfo, err er
 		return
 	}
 	// 替换变量列表
-	reg := regexp.MustCompile("{{(.+?)}}")
-	str := reg.ReplaceAllStringFunc(string(restFileBuf), varMap.ReplaceFunc)
+	str := varMap.Replace(string(restFileBuf))
 	// 解析
 	lines := strings.Split(str, "\n")
 	if len(lines) < 2 {
