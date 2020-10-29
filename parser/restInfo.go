@@ -85,10 +85,9 @@ func RestParser(filename string, varMap VarMap) (restInfoList []RestInfo, err er
 			lastRest.Path = tmpStr[1]
 			flag = _restHeader
 		case _restHeader:
-			tmpStr := strings.Split(v, ": ")
+			tmpStr := strings.SplitN(v, ": ",2)
 			if len(tmpStr) != 2 {
-				lastRest.Body = lastRest.Body + v
-				flag = _restBody
+				continue
 			} else {
 				if lastRest.Header == nil {
 					lastRest.Header = map[string]string{}
