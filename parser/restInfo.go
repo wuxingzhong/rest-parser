@@ -80,12 +80,12 @@ func RestParser(filename string, varMap VarMap) (restInfoList []RestInfo, err er
 			lastRest.Comment = strings.Trim(lastRest.Comment, " ")
 			flag = _restPath
 		case _restPath:
-			tmpStr := strings.Split(v, " ")
+			tmpStr := strings.SplitN(v, " ", 2)
 			lastRest.Method = tmpStr[0]
 			lastRest.Path = tmpStr[1]
 			flag = _restHeader
 		case _restHeader:
-			tmpStr := strings.SplitN(v, ": ",2)
+			tmpStr := strings.SplitN(v, ": ", 2)
 			if len(tmpStr) != 2 {
 				continue
 			} else {
